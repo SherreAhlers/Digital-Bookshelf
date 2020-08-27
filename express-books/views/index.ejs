@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+</head>
+
+<body>
+    <nav>
+        <a href="/">HOME</a>
+        <!-- <a href="/books">ALL BOOKS</a>
+    <a href="/books/new">ADD BOOKS</a>
+    <a href="/authors/new">ADD AUTHOR</a> -->
+    </nav>
+    <main>
+        <h1>
+            <%= title %>
+        </h1>
+        <p>Welcome to
+            <%= title %> an interactive database of books.<br>View books, leave comments and add a book to the collection!</p>
+    </main>
+</body>
+
 </html>
