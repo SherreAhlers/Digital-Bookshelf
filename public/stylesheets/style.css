@@ -44,9 +44,6 @@ body {
     background: #f2f6e9;
 }
 
-
-/*--- navigation bar ---*/
-
 .navbar {
     background: #3c6d24;
 }
@@ -101,11 +98,11 @@ h1 {
 }
 
 .description h1 {
-    color: rgb(14, 61, 14);
+    color: white;
 }
 
 .description p {
-    color: blue;
+    color: white;
     font-size: 1.3rem;
     line-height: 1.5;
     text-align: center;
