@@ -1,0 +1,112 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    grid-template-areas: "nav" "main";
+}
+
+main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #E8ECEB;
+    padding: 20px;
+    overflow-y: scroll;
+    background: url('https://i.imgur.com/nQ74az4.jpg');
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+a {
+    color: #00B7FF;
+}
+
+nav>img {
+    width: 40px;
+    object-fit: contain;
+    margin-right: auto;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background: #f2f6e9;
+}
+
+
+/*--- navigation bar ---*/
+
+.navbar {
+    background: #3c6d24;
+}
+
+.nav-link,
+.navbar-brand {
+    color: yellow;
+    cursor: pointer;
+}
+
+.nav-link {
+    margin-right: 1em !important;
+}
+
+.nav-link:hover {
+    color: #000;
+}
+
+.navbar-collapse {
+    justify-content: flex-end;
+}
+
+.overlay {
+    position: absolute;
+    min-height: 100%;
+    min-width: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    text-align: center;
+    padding-top: 100px;
+    margin-top: 50px;
+}
+
+
+/* p {
+    text-align: center;
+    padding: 100px;
+    color: darkblue;
+    font-size: 40px;
+} */
+
+.description {
+    left: 50%;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -55%);
+    text-align: center;
+}
+
+.description h1 {
+    color: rgb(14, 61, 14);
+}
+
+.description p {
+    color: blue;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    text-align: center;
+}
