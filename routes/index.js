@@ -27,10 +27,6 @@ router.get('/logout', function(req, res) {
     req.redirect('/users');
 });
 
-/* GET home page. */
-// router.get('/', function(req, res, next) {
-//     res.render('index', { title: 'Digital Bookshelf' });
-// });
 
 
 module.exports = router;
