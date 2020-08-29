@@ -2,9 +2,6 @@
 <html>
 
 <head>
-    <title>
-        <%= title %>
-    </title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css" />
@@ -34,14 +31,34 @@
         </div>
     </nav>
     <main>
+        <h2>Add A Book</h2>
+        <form id="new-form" action="/books" method="POST">
+            <label>Title:
+            <input type="text" name="title">
+        </label><br>
+            <label>Author:
+            <input type="text" name="author">
+        </label><br>
+            <label>Year Published:
+            <input type="number" name="yearPublished">
+        </label><br>
+            <label>Category:
+            <select name="category">
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="drama">Drama</option>
+                <option value="action">Action</option>
+                <option value="comedy">Comedy</option>
+                <option value="Biography">Biography</option>
+            </select>
+        </label><br>
+            <label>Is the book a movie too?</label>
+            <input type="checkbox" name="isMovieToo" checked>
+            </label><br>
+            <input type="submit" value="Add A Book!">
+        </form>
 
-        <div class="description">
-            <h1>
-                <%= title %>
-            </h1>
-            <p>Welcome to
-                <%= title %> an interactive database of books.<br>View books, leave comments and add a book to the collection!</p>
-        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

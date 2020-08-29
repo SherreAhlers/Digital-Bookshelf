@@ -3,7 +3,12 @@ var users = require('../controllers/users');
 const { NotExtended } = require('http-errors');
 
 // GET /students
-router.get('/', users.index);
+// router.get('/', users.index);
+// router.get('/books', books.index);
+router.get('/', function(req, res, next) {
+    res.redirect('/books');
+});
+
 
 // POST /facts
 // We will already have access to the logged in student on
@@ -17,5 +22,6 @@ function isLoggedIn() {
     if (req.isAuthenticated()) return next();
     res.redirect('/auth/google');
 }
+
 
 module.exports = router;
