@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    res.redirect('/books');
+    res.redirect('/users');
 });
 
 router.get('/auth/google', passport.authenticate(
@@ -24,7 +24,7 @@ router.get('/oauth2callback', passport.authenticate(
 
 router.get('/logout', function(req, res) {
     req.logout();
-    req.redirect('/users');
+    res.redirect('/');
 });
 
 

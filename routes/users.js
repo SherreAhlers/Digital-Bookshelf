@@ -1,10 +1,9 @@
 var router = require('express').Router();
-var users = require('../controllers/users');
+const usersCtrl = require('../controllers/users');
 const { NotExtended } = require('http-errors');
 
 // GET /students
-// router.get('/', users.index);
-// router.get('/books', books.index);
+router.get('/all', usersCtrl.index);
 router.get('/', function(req, res, next) {
     res.redirect('/books');
 });
@@ -13,7 +12,7 @@ router.get('/', function(req, res, next) {
 // POST /facts
 // We will already have access to the logged in student on
 // the server, therefore do not use: /students/:id/facts
-router.post('/comments', isLoggedIn, users.addComment);
+router.post('/comments', isLoggedIn, usersCtrl.addComment);
 
 // DELETE /facts/:id
 // router.delete('/comments/:id', users.delComment);

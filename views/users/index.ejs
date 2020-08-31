@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <h2>All Books</h2>
+    <h2>Users Books</h2>
     <table>
         <thead>
             <tr>
@@ -10,15 +10,15 @@
             </tr>
         </thead>
         <tbody>
-            <% books.forEach(function(b) { %>
+            <% users.forEach(function(u) { %>
                 <tr>
                     <td>
-                        <%= b.title %>
+                        <%= u.title %>
                     </td>
                     <td>
-                        <%= b.author %>
+                        <%= u.author %>
                     </td>
-                    <td><a href="/books/<%= b._id %>">DETAILS</a></td>
+                    <td><a href="/users/<%= u._id %>">DETAILS</a></td>
                 </tr>
                 <% }); %>
         </tbody>

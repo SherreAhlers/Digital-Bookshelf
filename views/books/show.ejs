@@ -1,116 +1,30 @@
-<!DOCTYPE html>
-<html>
+<%- include('../partials/header') %>
 
-<head>
-    <title>
-        <%= title %>
-    </title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-md">
-        <img src="/images/bookshelf.jpeg">
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/books">ALL BOOKS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/books/new">ADD BOOKS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/auth/google"><i class="fa fa-key" aria-hidden="true"></i>Login with Google</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
-                </li>
-            </ul>
+    <section id="show-page">
+        <div>Title: </div>
+        <div>
+            <%= book.title %>
         </div>
-    </nav>
-    <main>
+        <div>Author: </div>
+        <div>
+            <%= book.author %>
+        </div>
+        <div>Year Published: </div>
+        <div>
+            <%= book.yearPublished %>
+        </div>
+        <div>Category: </div>
+        <div>
+            <%= book.category %>
+        </div>
+        <div>Is Book A Movie Too?: </div>
+        <div>
+            <%= book.isMovieToo ? 'Yes' : 'No' %>
+        </div>
+        <br><br>
+    </section>
 
-        <section id="show-page">
-            <div>Title: </div>
-            <div>
-                <%= book.title %>
-            </div>
-            <div>Author: </div>
-            <div>
-                <%= book.author %>
-            </div>
-            <div>Year Published: </div>
-            <div>
-                <%= book.yearPublished %>
-            </div>
-            <div>Category: </div>
-            <div>
-                <%= book.category %>
-            </div>
-            <div>Is Book A Movie Too?: </div>
-            <div>
-                <%= book.isMovieToo ? 'Yes' : 'No' %>
-            </div>
-            <br><br>
-        </section>
 
-        <h2>Comments:</h2>
-        <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">
-            <label>Rating:</label>
-            <select name="rating">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">2</option>
-    <option value="4">2</option>
-    <option value="5">2</option>
-    </select>
-            <input type="submit" value="Add Comment">
-        </form>
-        <% if (book.comments.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Comment</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% let total = 0 %>
-                        <% book.comments.forEach(function(c) { %>
-                            <% total += c.rating %>
-                                <tr>
-                                    <td>
-                                        <%= c.createdAt.toLocaleDateString() %>
-                                    </td>
-                                    <td>
-                                        <%= c.comment %>
-                                    </td>
-                                    <td>
-                                        <%= c.rating %>
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td><strong><%= (total / book.comments.length).toFixed(1) %></strong></td>
-                                    </tr>
-                </tbody>
-            </table>
-            <% } else { %>
-                <h5>No Comments Yet</h5>
-                <% } %>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-</body>
 
-</html>
+
+    <%- include('../partials/footer') %>

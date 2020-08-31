@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const commentSchema = new Schema({
-    content: String,
-    rating: { type: Number, min: 1, max: 5, default: 5 }
-}, {
-    timestamps: true
-});
+// const commentSchema = new Schema({
+//     content: String,
+//     rating: { type: Number, min: 1, max: 5, default: 5 },
+//     userId: String,
+//     userName: String
+// }, {
+//     timestamps: true
+// });
 
 const bookSchema = new Schema({
     title: { type: String, required: true },
@@ -26,7 +28,11 @@ const bookSchema = new Schema({
     },
     // bookCoverImage: String,
     isMovieToo: { type: Boolean, default: false },
-    comments: [commentSchema]
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
+
 }, {
     timestamps: true
 });

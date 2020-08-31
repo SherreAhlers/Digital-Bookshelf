@@ -14,7 +14,7 @@ require('dotenv').config();
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const booksRouter = require('./routes/books');
-const commentsRouter = require('./routes/comments');
+// const commentsRouter = require('./routes/comments');
 
 var app = express();
 require('./config/database');
@@ -37,11 +37,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
+app.use(function(req, res, next) {
+    res.locals.user = req.user;
+    next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/books', booksRouter);
-app.use('/', commentsRouter);
+// app.use('/', commentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
