@@ -17,7 +17,7 @@ router.post('/comments', isLoggedIn, usersCtrl.addComment);
 // DELETE /facts/:id
 // router.delete('/comments/:id', users.delComment);
 
-function isLoggedIn() {
+function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect('/auth/google');
 }

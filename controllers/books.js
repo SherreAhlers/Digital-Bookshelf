@@ -44,6 +44,38 @@ function create(req, res) {
     });
 };
 
+// function create(req, res) {
+//     req.body.isMovieToo = !!req.body.isMovieToo;
+//     console.log(req.body)
+//         // for (let key in req.body) {
+//         //     if (req.body[key] === '') delete req.body[key];
+//         // }
+//     req.body.user = req.user._id;
+//     const book = new Book(req.body);
+//     book.save(function(err) {
+//         // console.log(err);
+//         if (err) return res.redirect('books/new');
+//         res.redirect(`/users/all/${book._id}`);
+//     });
+// };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function edit(req, res) {
 //     Book.findById(req.params.id, function(err, book) {
 //         if (!book.user.equals(req.user._id))
@@ -62,7 +94,7 @@ function create(req, res) {
 //     })
 // };
 
-// function allBooks(req, res) {
+// function allUserBooks(req, res) {
 //     let bookQuery = req.query.title ? { name: new RegExp(req.query.title, 'i') } : {};
 //     Book.find(bookQuery, function(err, books) {
 //         res.render('/books/index', {
