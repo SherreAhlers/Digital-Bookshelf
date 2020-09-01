@@ -23,8 +23,22 @@
         </div>
         <br><br>
     </section>
+    <br><br>
+    <h2>Comments</h2>
+    <form id="add-comments-form" method="POST" action="/books/<%= book._id %>/comments">
+        <label>Add Comment:</label>
+        <textarea name="content"></textarea>
+        <label>Rating:</label>
+        <select name="rating">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+</select>
+        <input type="submit" value="Add Comment">
 
 
 
 
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
