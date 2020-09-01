@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 //     timestamps: true
 // });
 
-const userSchema = new mongoose.Schema({
+const readerSchema = new mongoose.Schema({
     name: String,
     email: String,
     cohort: String,
@@ -19,4 +19,4 @@ const userSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model('Reader', readerSchema);

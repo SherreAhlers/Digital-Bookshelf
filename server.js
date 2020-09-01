@@ -12,7 +12,7 @@ require('dotenv').config();
 
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var readersRouter = require('./routes/readers');
 const booksRouter = require('./routes/books');
 // const commentsRouter = require('./routes/comments');
 
@@ -44,7 +44,7 @@ app.use(methodOverride('_method'));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/readers', readersRouter);
 app.use('/books', booksRouter);
 // app.use('/', commentsRouter);
 

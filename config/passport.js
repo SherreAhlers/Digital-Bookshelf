@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy
-const User = require('../models/user');
+const Reader = require('../models/reader');
 
 passport.use(new GoogleStrategy({
         clientID: process.env.GOOGLE_CLIENT_ID,
@@ -8,34 +8,34 @@ passport.use(new GoogleStrategy({
         callbackURL: process.env.GOOGLE_CALLBACK
     },
     function(accessToken, refreshToken, profile, cb) {
-        User.findOne({
+        Reader.findOne({
             'googleId': profile.id
-        }, function(err, user) {
+        }, function(err, reader) {
             if (err) return cb(err);
-            if (user) {
-                return cb(null, user);
+            if (reader) {
+                return cb(null, reader);
             } else {
-                const newUser = new User({
+                const newReader = new Reader({
                     name: profile.displayName,
                     email: profile.emails[0].value,
                     googleId: profile.id,
                     avatar: profile.photos[0].value
                 });
-                newUser.save(function(err) {
+                newReader.save(function(err) {
                     if (err) return cb(err);
-                    return cb(null, newUser);
+                    return cb(null, newReader);
                 });
             }
         });
     }
 ));
 
-passport.serializeUser(function(user, done) {
-    done(null, user.id);
+passport.serializeUser(function(reader, done) {
+    done(null, reader.id);
 });
 
 passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-        done(err, user);
+    Reader.findById(id, function(err, reader) {
+        done(err, reader);
     });
 });

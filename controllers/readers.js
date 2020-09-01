@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const Reader = require('../models/reader');
 // const Book = require('../models/book');
 
 module.exports = {
@@ -11,14 +11,14 @@ function index(req, res, next) {
     console.log(req.query)
         // Make the query object to use with Student.find based up
         // the user has submitted the search form or now
-    let modelQuery = req.query.name ? { name: new RegExp(req.query.title, 'i') } : {};
+    let modelQuery = req.query.name ? { name: new RegExp(req.query.name, 'i') } : {};
     // Default to sorting by name
-    let sortKey = req.query.name || 'name';
-    User.find(modelQuery)
+    let sortKey = req.query.sort || 'name';
+    Reader.find(modelQuery)
         .sort(sortKey).exec(function(err, users) {
             if (err) return next(err);
             // Passing search values, name & sortKey, for use in the EJS
-            res.render('users/index', { users, name: req.query.name, sortKey });
+            res.render('readers/index', { readers, name: req.query.name, sortKey });
         });
 }
 
@@ -27,7 +27,7 @@ function addComment(req, res, next) {
     // req.user IS this Mongoose doc for the logged in user
     req.user.comments.push(req.body);
     req.user.save(function(err) {
-        res.redirect('/users');
+        res.redirect('/readers');
     });
 }
 
