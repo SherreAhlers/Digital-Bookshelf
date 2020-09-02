@@ -1,5 +1,5 @@
 const Reader = require('../models/reader');
-// const Book = require('../models/book');
+const Book = require('../models/book');
 
 module.exports = {
     index,

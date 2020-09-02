@@ -25,7 +25,7 @@
     </section>
     <br><br>
     <h2>Comments</h2>
-    <form id="add-comments-form" method="POST" action="/books/<%= book._id %>/comments">
+    <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">
         <label>Add Comment:</label>
         <textarea name="content"></textarea>
         <label>Rating:</label>
@@ -38,7 +38,40 @@
 </select>
         <input type="submit" value="Add Comment">
 
+        <% if (book.comments.length) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Comments</th>
+                        <th>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let total = 0 %>
+                        <% book.comments.forEach(function(c) { %>
+                            <% total += c.rating %>
+                                <tr>
+                                    <td>
+                                        <%= c.createdAt.toLocaleDateString() %>
+                                    </td>
+                                    <td>
+                                        <%= c.content %>
+                                    </td>
+                                    <td>
+                                        <%= c.rating %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td><strong><%= (total / book.comments.length).toFixed(1) %></strong></td>
+                                    </tr>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h5>No Comments Yet</h5>
+                <% } %>
 
 
-
-        <%- include('../partials/footer') %>
+                    <%- include('../partials/footer') %>
