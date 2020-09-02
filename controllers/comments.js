@@ -1,7 +1,8 @@
 const Book = require('../models/book');
 
 module.exports = {
-    create
+    create,
+    edit
 };
 
 function create(req, res) {
@@ -17,11 +18,10 @@ function create(req, res) {
     });
 }
 
-// function create(req, res) {
-//     Book.findById(req.params.id, function(err, book) {
-//         book.comments.push(req.body);
-//         book.save(function(err) {
-//             res.redirect(`/books/${book._id}`);
-//         });
-//     });
-// };
+function edit(req, res) {
+    Book.findById(req.params.id, function(err, book) {
+        if (!book.user.equals(req.user._id))
+            return res.redirect('/books');
+        res.render('books/edit', { book });
+    });
+};

@@ -5,9 +5,9 @@ module.exports = {
     index,
     show,
     new: newBook,
-    create
-    // addToUserBooks
-    // allBooks
+    create,
+    addToUserBooks
+    // allSearchBooks
     // edit
 };
 
@@ -45,49 +45,23 @@ function create(req, res) {
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function edit(req, res) {
-//     Book.findById(req.params.id, function(err, book) {
-//         if (!book.user.equals(req.user._id))
-//             return res.redirect('/books');
-//         res.render('books/edit' { book });
-//     });
-// };
-
-// function addToUserBooks(req, res) {
-//     Book.findById(req.params.id, function(err, book) {
-//         if (book.userReading.id(req.user._id)) return res.redirct('/books');
-//         book.userReading.push(req.user._id);
-//         book.save(function(err) {
-//             res.render('books/edit', { book });
-//         });
-//     })
-// };
-
-// function allUserBooks(req, res) {
-//     let bookQuery = req.query.title ? { name: new RegExp(req.query.title, 'i') } : {};
+// function allSearchBooks(req, res) {
+//     let bookQuery = req.query.title ? { title: new RegExp(req.query.title, 'i') } : {};
 //     Book.find(bookQuery, function(err, books) {
 //         res.render('/books/index', {
 //             books,
-//             user: req.user,
-//             nameSearch: req.query.name
+//             reader: req.user,
+//             nameSearch: req.query.title
 //         });
 //     });
 // };
+
+function addToUserBooks(req, res) {
+    Book.findById(req.params.id, function(err, book) {
+        if (book.userReading.id(req.user._id)) return res.redirct('/books');
+        book.userReading.push(req.user._id);
+        book.save(function(err) {
+            res.render('books/edit', { book });
+        });
+    })
+};
