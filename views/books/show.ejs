@@ -17,6 +17,9 @@
         <div>
             <%= book.category %>
         </div>
+        <div>
+            <%= book.image %>
+        </div>
         <div>Is Book A Movie Too?: </div>
         <div>
             <%= book.isMovieToo ? 'Yes' : 'No' %>
@@ -37,41 +40,54 @@
     <option value="5">5</option>
 </select>
         <input type="submit" value="Add Comment">
+    </form>
 
-        <% if (book.comments.length) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Comments</th>
-                        <th>Rating</th>
-                    </tr>
-                </thead>
-                <tbody>
+    <% if (book.comments.length) { %>
+        <div class="card" style="width: 40rem;">
+            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+            <div class="card-body">
+                <h5 class="card-title">Comment Details</h5>
+                <p class="card-text">
                     <% let total = 0 %>
-                        <% book.comments.forEach(function(c) { %>
-                            <% total += c.rating %>
-                                <tr>
-                                    <td>
-                                        <%= c.createdAt.toLocaleDateString() %>
-                                    </td>
-                                    <td>
-                                        <%= c.content %>
-                                    </td>
-                                    <td>
-                                        <%= c.rating %>
-                                    </td>
-                                </tr>
-                                <% }); %>
-                                    <tr>
-                                        <td colspan="2"></td>
-                                        <td><strong><%= (total / book.comments.length).toFixed(1) %></strong></td>
-                                    </tr>
-                </tbody>
-            </table>
-            <% } else { %>
-                <h5>No Comments Yet</h5>
-                <% } %>
+                        <% book.comments.forEach(function(comment) { %>
+                            <% total += comment.rating %>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        Date:
+                                        <%= comment.createdAt.toLocaleDateString() %>
+                                    </li>
+                                    <br>
+                                    <li class="list-group-item">
+                                        Comments:
+                                        <%= comment.content %>
+                                    </li>
+                                    <li class="list-group-item">
+                                        Rating:
+                                        <%= comment.rating %>
+                                    </li>
+                                    <% }); %>
+                                        <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
+                                </ul>
+                                <% } else { %>
+                                    <h5>No Comments Yet</h5>
+                                    <% } %>
+                                        <div class="comment">
+                                            <% book.comments.forEach(function(comment) { %>
+                                                <!-- <div class="comment"> -->
+                                                <%= comment.text %>
+                                                    <form>
+                                                        <div action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                                            <!-- Value attribute is being set to the comment's current text -->
+                                                            <input name="text" value="<%= comment.text %>">
+                                                            <button type="submit">UPDATE COMMENT</button>
+                                                        </div>
+                                                    </form>
+                                                    <% }) %>
+                                        </div>
 
+                </p>
 
-                    <%- include('../partials/footer') %>
+            </div>
+        </div>
+
+        <%- include('../partials/footer') %>

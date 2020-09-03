@@ -21,12 +21,13 @@ const bookSchema = new Schema({
         min: 1900,
         max: 2021
     },
+    image: { type: String, default: "/images/default-book-image.jpeg" },
     category: {
         type: String,
         enum: ['Fiction', 'Non-Fiction', 'Fantasy', 'Action', 'Drama', 'Comedy', 'Biography'],
         required: true
     },
-    // bookCoverImage: String,
+
     isMovieToo: { type: Boolean, default: false },
     user: {
         type: Schema.Types.ObjectId,

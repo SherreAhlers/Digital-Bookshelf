@@ -3,10 +3,17 @@ const router = express.Router();
 const commentsCtrl = require('../controllers/comments');
 
 
-router.post('/books/:id/comments', commentsCtrl.create);
+router.post('/books/:id/comments', isLoggedIn, commentsCtrl.create);
+router.post('/comments', isLoggedIn, commentsCtrl.addComment);
 
-router.get('/books/:id/edit', commentsCtrl.edit);
-// router.post('/:id', commentsCtrl.update);
-// router.get('/:id', commentsCtrl.delete);
+router.put('/comments/:id', isLoggedIn, commentsCtrl.updateComment);
+router.get('/:id/edit', isLoggedIn, commentsCtrl.edit);
+
+
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated()) return next();
+    res.redirect('/auth/google');
+}
 
 module.exports = router;
