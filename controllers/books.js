@@ -1,4 +1,5 @@
 const Book = require('../models/book');
+const Author = require('../models/author');
 
 
 module.exports = {
@@ -15,10 +16,13 @@ function index(req, res) {
 };
 
 function show(req, res) {
-    Book.findById(req.params.id, function(err, book) {
-            res.render('books/show', { title: 'Book Details', book });
-        })
-        // .populate('')
+    Book.findById(req.params.id)
+        .populate('writers').exec(function(err, book) {
+            Author.find({ _id: { $nin: book.writers } }, function(err, authors) {
+                console.log(authors);
+                res.render('books/show', { title: 'Book Detail', book, authors });
+            });
+        });
 }
 
 function newBook(req, res) {

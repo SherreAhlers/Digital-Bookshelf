@@ -12,7 +12,6 @@ const commentSchema = new Schema({
 
 const bookSchema = new Schema({
     title: { type: String, required: true },
-    author: { type: String, required: true },
     yearPublished: {
         type: Number,
         default: function() {
@@ -33,7 +32,8 @@ const bookSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Reader'
     },
-    comments: [commentSchema]
+    comments: [commentSchema],
+    writers: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
 
 }, {
     timestamps: true

@@ -25,7 +25,22 @@
             <%= book.isMovieToo ? 'Yes' : 'No' %>
         </div>
         <br><br>
+        <div>Writers:</div>
+        <ul>
+            <%- book.writers.map(author => 
+      `<li>${author.name} <small></li>`
+    ).join('') %>
+        </ul>
     </section>
+    <form id="add-author-to-writers" action="/books/<%= book._id %>/authors" method="POST">
+        <select name="authorId">
+          <%- authors.map(author => 
+            `<option value="${author._id}">${author.name}</option>`
+          ).join('') %>
+        </select>
+        <button type="submit">Add to Author</button>
+    </form>
+
     <br><br>
     <h2>Comments</h2>
     <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">

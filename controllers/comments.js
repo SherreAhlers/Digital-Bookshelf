@@ -38,9 +38,9 @@ function edit(req, res) {
 function updateComment(req, res) {
     console.log("we are hitting here")
     Book.findOne({ 'comments._id': req.params.id }, function(err, book) {
-        const commentSchema = book.comments.id(req.params.id);
-        if (!commentSchema.userId.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
-        commentSchema.text = req.body.text;
+        const comments = book.comments.id(req.params.id);
+        if (!comment.userId.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
+        comments.text = req.body.text;
         book.save(function(err) {
             res.redirect(`/books/${book._id}`);
         });
