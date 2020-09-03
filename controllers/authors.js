@@ -1,12 +1,9 @@
 const Author = require('../models/author');
 const Book = require('../models/book');
-// const { NetworkAuthenticationRequire } = require('http-errors');
-
 
 module.exports = {
     new: newAuthor,
-    create,
-    addToAuthors
+    create
 };
 
 
@@ -18,18 +15,10 @@ function create(req, res) {
 
 function newAuthor(req, res) {
     Author.find({}, function(err, authors) {
+        console.log(authors, 'hitting here')
         res.render('authors/new', {
             title: 'Add Author',
             authors
-        });
-    });
-};
-
-function addToAuthors(req, res) {
-    Book.findById(req.params.id, function(err, books) {
-        book.writers.push(req.body.authorId);
-        book.save(function(err) {
-            res.redirect(`/books/${book._id}`);
         });
     });
 };

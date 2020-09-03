@@ -11,8 +11,9 @@ module.exports = {
 
 function create(req, res) {
     Book.findById(req.params.id, function(err, book) {
-        req.body.userId = req.user._id;
-        req.body.userName = req.user.name;
+        req.body.user = req.user
+        console.log(book, 'THIS IS THE BOOK!')
+        console.log(req.body, 'This is req.body')
         book.comments.push(req.body);
         book.save(function(err) {
             res.redirect(`/books/${book._id}`);
@@ -36,11 +37,10 @@ function edit(req, res) {
 }
 
 function updateComment(req, res) {
-    console.log("we are hitting here")
     Book.findOne({ 'comments._id': req.params.id }, function(err, book) {
-        const comments = book.comments.id(req.params.id);
-        if (!comment.userId.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
-        comments.text = req.body.text;
+        const comment = book.comments.id(req.params.id);
+        if (!comment.user.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
+        comment.content = req.body.content; // this is where the edit takes place
         book.save(function(err) {
             res.redirect(`/books/${book._id}`);
         });

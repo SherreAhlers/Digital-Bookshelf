@@ -1,108 +1,94 @@
 <%- include('../partials/header') %>
 
     <section id="show-page">
-        <div>Title: </div>
-        <div>
-            <%= book.title %>
+        <div class="card">
+            <div class="book-details"></div>
+            <div>Title: </div>
+            <div>
+                <%= book.title %>
+            </div>
+            <div>Author: </div>
+            <div>
+                <%= book.author %>
+            </div>
+            <div>Year Published: </div>
+            <div>
+                <%= book.yearPublished %>
+            </div>
+            <div>Category: </div>
+            <div>
+                <%= book.category %>
+            </div>
+            <div>
+                <%= book.image %>
+            </div>
+            <div>Is Book A Movie Too?: </div>
+            <div>
+                <%= book.isMovieToo ? 'Yes' : 'No' %>
+            </div>
         </div>
-        <div>Author: </div>
-        <div>
-            <%= book.author %>
-        </div>
-        <div>Year Published: </div>
-        <div>
-            <%= book.yearPublished %>
-        </div>
-        <div>Category: </div>
-        <div>
-            <%= book.category %>
-        </div>
-        <div>
-            <%= book.image %>
-        </div>
-        <div>Is Book A Movie Too?: </div>
-        <div>
-            <%= book.isMovieToo ? 'Yes' : 'No' %>
         </div>
         <br><br>
-        <div>Writers:</div>
-        <ul>
-            <%- book.writers.map(author => 
-      `<li>${author.name} <small></li>`
-    ).join('') %>
-        </ul>
-    </section>
-    <form id="add-author-to-writers" action="/books/<%= book._id %>/authors" method="POST">
-        <select name="authorId">
-          <%- authors.map(author => 
-            `<option value="${author._id}">${author.name}</option>`
-          ).join('') %>
-        </select>
-        <button type="submit">Add to Author</button>
-    </form>
 
-    <br><br>
-    <h2>Comments</h2>
-    <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">
-        <label>Add Comment:</label>
-        <textarea name="content"></textarea>
-        <label>Rating:</label>
-        <select name="rating">
+        <br><br>
+        <div class="card"></div>
+        <div class="comment-details"></div>
+        <h2>Comments</h2>
+        <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">
+            <label>Add Comment:</label>
+            <textarea name="content"></textarea>
+            <label>Rating:</label>
+            <select name="rating">
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
 </select>
-        <input type="submit" value="Add Comment">
-    </form>
-
-    <% if (book.comments.length) { %>
-        <div class="card" style="width: 40rem;">
-            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
-            <div class="card-body">
-                <h5 class="card-title">Comment Details</h5>
-                <p class="card-text">
-                    <% let total = 0 %>
-                        <% book.comments.forEach(function(comment) { %>
-                            <% total += comment.rating %>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">
-                                        Date:
-                                        <%= comment.createdAt.toLocaleDateString() %>
-                                    </li>
-                                    <br>
-                                    <li class="list-group-item">
-                                        Comments:
-                                        <%= comment.content %>
-                                    </li>
-                                    <li class="list-group-item">
-                                        Rating:
-                                        <%= comment.rating %>
-                                    </li>
-                                    <% }); %>
-                                        <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
-                                </ul>
-                                <% } else { %>
-                                    <h5>No Comments Yet</h5>
-                                    <% } %>
-                                        <div class="comment">
-                                            <% book.comments.forEach(function(comment) { %>
-                                                <!-- <div class="comment"> -->
-                                                <%= comment.text %>
-                                                    <form>
-                                                        <div action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-                                                            <!-- Value attribute is being set to the comment's current text -->
-                                                            <input name="text" value="<%= comment.text %>">
-                                                            <button type="submit">UPDATE COMMENT</button>
-                                                        </div>
-                                                    </form>
-                                                    <% }) %>
-                                        </div>
-
-                </p>
-
-            </div>
+            <input type="submit" value="Add Comment">
+        </form>
+        </div>
         </div>
 
-        <%- include('../partials/footer') %>
+        <% if (book.comments.length) { %>
+            <div class="card" style="width: 40rem;">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <div class="card-body">
+                    <h5 class="card-title">Comment Details</h5>
+                    <p class="card-text">
+                        <% let total = 0 %>
+                            <% book.comments.forEach(function(comment) { %>
+                                <% total += comment.rating %>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            Date:
+                                            <%= comment.createdAt.toLocaleDateString() %>
+                                        </li>
+                                        <br>
+                                        <li class="list-group-item">
+                                            Comments:
+                                            <%= comment.content %>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Rating:
+                                            <%= comment.rating %>
+                                        </li>
+                                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                            <input name="content" value="<%= comment.content %>">
+                                            <button type="submit">UPDATE COMMENT</button>
+                                        </form>
+                                        <% }); %>
+                                            <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
+
+                                    </ul>
+                                    <% } else { %>
+                                        <h5>No Comments Yet</h5>
+                                        <% } %>
+
+
+                    </p>
+
+                </div>
+            </div>
+
+            <%- include('../partials/footer') %>

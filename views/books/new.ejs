@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <h2>Add A Book</h2>
+    <h3>Add A Book</h3>
     <form id="new-form" action="/books" method="POST">
         <label>Title:
             <input type="text" name="title">
@@ -22,7 +22,7 @@
                 <option value="Biography">Biography</option>
             </select>
         </label><br>
-        <label>Is the book a movie too?</label>
+        <label>Is the book a movie too?</label><br>
         <input type="checkbox" name="isMovieToo" checked>
         </label><br>
         <input type="submit" value="Add A Book!">

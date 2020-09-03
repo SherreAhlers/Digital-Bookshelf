@@ -4,8 +4,10 @@ const Schema = mongoose.Schema;
 const commentSchema = new Schema({
     content: String,
     rating: { type: Number, min: 1, max: 5, default: 5 },
-    userId: String,
-    userName: String
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'Reader'
+    }
 }, {
     timestamps: true
 });
@@ -33,7 +35,7 @@ const bookSchema = new Schema({
         ref: 'Reader'
     },
     comments: [commentSchema],
-    writers: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
+    authors: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
 
 }, {
     timestamps: true

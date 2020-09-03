@@ -6,7 +6,8 @@ module.exports = {
     index,
     show,
     new: newBook,
-    create
+    create,
+    addToAuthors
 };
 
 function index(req, res) {
@@ -17,13 +18,15 @@ function index(req, res) {
 
 function show(req, res) {
     Book.findById(req.params.id)
-        .populate('writers').exec(function(err, book) {
-            Author.find({ _id: { $nin: book.writers } }, function(err, authors) {
-                console.log(authors);
+        .populate('authors').exec(function(err, book) {
+            // console.log(book, ' what is this does it have authors?')
+            Author.find({ _id: { $nin: book.authors } }, function(err, authors) {
                 res.render('books/show', { title: 'Book Detail', book, authors });
             });
+
         });
-}
+};
+
 
 function newBook(req, res) {
     res.render('books/new', { title: 'Add Book' });
@@ -42,6 +45,17 @@ function create(req, res) {
     });
 };
 
+function addToAuthors(req, res) {
+    // console.log(req.body.authorId)
+    // console.log('hitting this spot')
+    Book.findById(req.params.id, function(err, book) {
+
+        book.authors.push(req.body.authorId);
+        book.save(function(err) {
+            res.redirect(`/books/${book._id}`);
+        });
+    });
+};
 
 
 
