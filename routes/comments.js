@@ -9,6 +9,9 @@ router.post('/comments', isLoggedIn, commentsCtrl.addComment);
 router.put('/comments/:id', isLoggedIn, commentsCtrl.updateComment);
 router.get('/:id/edit', isLoggedIn, commentsCtrl.edit);
 
+router.delete('/comments/:id', isLoggedIn, commentsCtrl.deleteComment)
+
+
 
 
 function isLoggedIn(req, res, next) {

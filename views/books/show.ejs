@@ -77,6 +77,9 @@
                                             <input name="content" value="<%= comment.content %>">
                                             <button type="submit">UPDATE COMMENT</button>
                                         </form>
+                                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                            <button type="sumbit">X</button>
+                                        </form>
                                         <% }); %>
                                             <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
 

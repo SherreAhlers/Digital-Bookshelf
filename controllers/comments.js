@@ -4,7 +4,8 @@ module.exports = {
     create,
     addComment,
     edit,
-    updateComment
+    updateComment,
+    deleteComment
 
 
 };
@@ -47,24 +48,15 @@ function updateComment(req, res) {
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-// function deleteOne(req, res) {
-//     Book.findOne({ 'comments._id': req.params.id }, function(err, book) {
-//         const commentSubdoc = book.comments.id(req.params.id);
-//         if (!commentSubdoc.userId.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
-//         commentSubdoc.remove();
-//         book.save(function(err) {
-//             res.redirect(`/books/${book._id}`);
-//         });
-//     });
-// }
+function deleteComment(req, res) {
+    Book.findOne({ 'comments._id': req.params.id }, function(err, book) {
+        console.log(req.params.id)
+        const comment = book.comments.id(req.params.id);
+        if (!comment.user.equals(req.user._id)) return res.redirect(`/books/${book._id}`);
+        comment.content = req.body.content;
+        comment.remove();
+        book.save(function(err) {
+            res.redirect(`/books/${book._id}`);
+        });
+    });
+}

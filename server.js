@@ -15,7 +15,6 @@ var indexRouter = require('./routes/index');
 var readersRouter = require('./routes/readers');
 const booksRouter = require('./routes/books');
 const commentsRouter = require('./routes/comments');
-const authorsRouter = require('./routes/authors');
 
 var app = express();
 require('./config/database');
@@ -48,7 +47,6 @@ app.use('/', indexRouter);
 app.use('/readers', readersRouter);
 app.use('/books', booksRouter);
 app.use('/', commentsRouter);
-app.use('/', authorsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

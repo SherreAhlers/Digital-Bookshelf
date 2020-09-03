@@ -34,8 +34,7 @@ const bookSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Reader'
     },
-    comments: [commentSchema],
-    authors: [{ type: Schema.Types.ObjectId, ref: 'Author' }]
+    comments: [commentSchema]
 
 }, {
     timestamps: true
