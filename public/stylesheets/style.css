@@ -150,33 +150,10 @@ th {
 }
 
 #add-book {
-    width: 300px;
-}
-
-
-/* ul {
-    margin: 0 0 1rem;
-    padding: 0;
-    list-style: none;
-} */
-
-
-/* li {
-    font-weight: bold;
-} */
-
-
-/* .card {
-    font-size: 15px;
+    width: 200px;
+    margin-top: 0px;
     text-align: center;
-    font-weight: bold;
-    background-color: white;
-} */
-
-
-/* p {
-    margin-top: 10px
-} */
+}
 
 h3 {
     margin-top: 100px;

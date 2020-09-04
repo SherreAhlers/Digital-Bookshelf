@@ -62,10 +62,10 @@
                                     Date:
                                     <%= comment.createdAt.toLocaleDateString() %>
                                         </li>
-                                        <br> Comments:
+                                        <br> <strong>Comments:</strong><br>
                                         <%= comment.content %>
                                             </li>
-                                            Rating:
+                                            <br><strong>Rating:</strong>
                                             <%= comment.rating %>
                                                 </li>
                                                 <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
@@ -73,10 +73,12 @@
                                                     <button type="submit">UPDATE COMMENT</button>
                                                 </form>
                                                 <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                                    <button type="sumbit">X</button>
+                                                    <button type="sumbit">DELETE COMMENT</button>
                                                 </form>
                                                 <% }); %>
-                                                    <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
+                                                    <li><strong>Overall Rating:</strong>
+                                                        <%= (total / book.comments.length).toFixed(1) %>
+                                                    </li>
 
                                                     </ul>
                                                     <% } else { %>

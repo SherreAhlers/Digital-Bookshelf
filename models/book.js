@@ -19,7 +19,7 @@ const bookSchema = new Schema({
         default: function() {
             return new Date().getFullYear();
         },
-        min: 1900,
+        min: 1800,
         max: 2021
     },
     category: {

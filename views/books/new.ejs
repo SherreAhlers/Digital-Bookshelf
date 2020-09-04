@@ -3,16 +3,16 @@
     <h3>Add A Book</h3>
     <div id="add-book" class="card">
         <form id="new-form" action="/books" method="POST">
-            <label>Title:
+            <label><strong>Title:</strong>
             <input type="text" name="title">
         </label><br>
             <label>Author:
             <input type="text" name="author">
         </label><br>
-            <label>Year Published:
+            <label><strong>Year Published:</strong>
             <input type="number" name="yearPublished">
         </label><br>
-            <label>Category:
+            <label><strong>Category:</strong>
             <select name="category">
                 <option value="Fiction">Fiction</option>
                 <option value="Non-Fiction">Non-Fiction</option>
@@ -23,7 +23,7 @@
                 <option value="Biography">Biography</option>
             </select>
         </label><br>
-            <label>Is the book a movie too?</label><br>
+            <label><strong>Is the book a movie too?</strong></label><br>
             <input type="checkbox" name="isMovieToo" checked>
             </label><br>
             <input type="submit" value="Add A Book!">
