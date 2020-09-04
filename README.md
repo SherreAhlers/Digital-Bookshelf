@@ -4,14 +4,14 @@ This app allows the user to store a collection of books and comments. The user w
 
 <img src="https://i.imgur.com/WV7oNvV.png" width="600">  
 
+## Click here to go to Digital-Bookshelf: <https://the-digital-bookshelf.herokuapp.com/>
+Click here to see my project planning Trello Board.
+<https://trello.com/b/2iPDEL4m/project-2>
+
 
 ## Technologies Used
 For this app I used Javascript, HTML, CSS, Bootstrap, Jquery, and CRUD.
 
-
-## Click here to go to Digital-Bookshelf: <https://the-digital-bookshelf.herokuapp.com/>
-Click here to see my project planning Trello Board.
-<https://trello.com/b/2iPDEL4m/project-2>
 
 ## Digital-Bookshelf Wireframe
 1. Begin by implementing the Oauth, so the app requires a logged in user to add to and edit the app.
