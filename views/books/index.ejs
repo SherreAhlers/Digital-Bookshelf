@@ -1,29 +1,31 @@
 <%- include('../partials/header') %>
 
-    <div class="details">
+    <div id="all-books">
         <h1>All Books</h1>
     </div>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% books.forEach(function(b) { %>
+    <div id="all-books-card" class="card">
+        <table>
+            <thead>
                 <tr>
-                    <td>
-                        <%= b.title %>
-                    </td>
-                    <td>
-                        <%= b.author %>
-                    </td>
-                    <td><a href="/books/<%= b._id %>">DETAILS</a></td>
-                </tr>
-                <% }); %>
-        </tbody>
-    </table>
+                    <th>Title</th>
 
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% books.forEach(function(b) { %>
+                    <tr>
+                        <td>
+                            <%= b.title %>
+                        </td>
+                        <td>
+                            <%= b.author %>
+                        </td>
+                        <td><a href="/books/<%= b._id %>">DETAILS</a></td>
+                    </tr>
+                    <% }); %>
+            </tbody>
+        </table>
+    </div>
 
     <%- include('../partials/footer') %>

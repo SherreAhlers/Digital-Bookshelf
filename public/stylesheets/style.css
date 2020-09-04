@@ -66,18 +66,20 @@ body {
     justify-content: flex-end;
 }
 
-.overlay {
+
+/* .overlay {
     position: absolute;
     min-height: 100%;
     min-width: 100%;
     left: 0;
     top: 0;
     background: rgba(0, 0, 0, 0.4);
-}
+} */
 
 h1 {
     text-align: center;
     padding-top: 50px;
+    padding-bottom: 20px;
 }
 
 
@@ -107,56 +109,74 @@ h1 {
     text-align: center;
 }
 
-#new-form *,
-#add-comment-form * {
-    font-size: 20px;
-}
-
 #new-form {
     margin-top: 60px;
 }
 
 #add-comment-form {
-    /* display: grid;
-    grid-template-columns: auto auto; */
-    grid-gap: 1rem;
-    width: 20rem;
     text-align: center;
 }
 
 #add-comment-form input[type="submit"] {
-    width: 20rem;
-    grid-column: 2 / 3;
+    width: 8rem;
     margin-bottom: 2rem;
 }
 
-ul {
+#card-show {
+    margin-left: 170px;
+    margin-top: 50px;
+    justify-items: center;
+    align-items: center;
+}
+
+h4 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+}
+
+#comment-details {
+    align-items: center;
+}
+
+#all-books {
+    margin-top: 50px;
+}
+
+th {
+    text-align: center;
+}
+
+#add-book {
+    width: 300px;
+}
+
+
+/* ul {
     margin: 0 0 1rem;
     padding: 0;
     list-style: none;
-}
+} */
 
-li {
+
+/* li {
     font-weight: bold;
-}
+} */
 
-#add-author-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 1rem;
-    margin-right: 350px;
-}
 
-.card {
+/* .card {
     font-size: 15px;
     text-align: center;
     font-weight: bold;
     background-color: white;
-}
+} */
 
-p {
+
+/* p {
     margin-top: 10px
-}
+} */
 
 h3 {
     margin-top: 100px;

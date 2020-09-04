@@ -1,39 +1,39 @@
 <%- include('../partials/header') %>
 
     <section id="show-page">
-        <div class="card">
+        <div id="card-show" class="card w-50">
+            <div class="card-body">
+                <p class="card-text">
+            </div>
             <div class="book-details"></div>
-            <div>Title: </div>
+            <div><strong>Title:</strong> </div>
             <div>
                 <%= book.title %>
             </div>
-            <div>Author: </div>
+            <div><strong>Author:</strong> </div>
             <div>
                 <%= book.author %>
             </div>
-            <div>Year Published: </div>
+            <div><strong>Year Published:</strong> </div>
             <div>
                 <%= book.yearPublished %>
             </div>
-            <div>Category: </div>
+            <div><strong>Category:</strong> </div>
             <div>
                 <%= book.category %>
             </div>
-            <div>
-                <%= book.image %>
-            </div>
-            <div>Is Book A Movie Too?: </div>
+            <div><strong>Is Book A Movie Too?:</strong> </div>
             <div>
                 <%= book.isMovieToo ? 'Yes' : 'No' %>
             </div>
+            </p>
         </div>
         </div>
         <br><br>
 
         <br><br>
-        <div class="card"></div>
-        <div class="comment-details"></div>
-        <h2>Comments</h2>
+        <div id="comment-form"></div>
+        <h4>Comments</h4>
         <form id="add-comment-form" method="POST" action="/books/<%= book._id %>/comments">
             <label>Add Comment:</label>
             <textarea name="content"></textarea>
@@ -51,7 +51,7 @@
         </div>
 
         <% if (book.comments.length) { %>
-            <div class="card" style="width: 40rem;">
+            <div id="comment-details" class="card" style="width: 35rem;">
                 <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
                 <div class="card-body">
                     <h5 class="card-title">Comment Details</h5>
@@ -59,34 +59,29 @@
                         <% let total = 0 %>
                             <% book.comments.forEach(function(comment) { %>
                                 <% total += comment.rating %>
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">
-                                            Date:
-                                            <%= comment.createdAt.toLocaleDateString() %>
+                                    Date:
+                                    <%= comment.createdAt.toLocaleDateString() %>
                                         </li>
-                                        <br>
-                                        <li class="list-group-item">
-                                            Comments:
-                                            <%= comment.content %>
-                                        </li>
-                                        <li class="list-group-item">
+                                        <br> Comments:
+                                        <%= comment.content %>
+                                            </li>
                                             Rating:
                                             <%= comment.rating %>
-                                        </li>
-                                        <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
-                                            <input name="content" value="<%= comment.content %>">
-                                            <button type="submit">UPDATE COMMENT</button>
-                                        </form>
-                                        <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
-                                            <button type="sumbit">X</button>
-                                        </form>
-                                        <% }); %>
-                                            <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
+                                                </li>
+                                                <form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+                                                    <input name="content" value="<%= comment.content %>">
+                                                    <button type="submit">UPDATE COMMENT</button>
+                                                </form>
+                                                <form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                                                    <button type="sumbit">X</button>
+                                                </form>
+                                                <% }); %>
+                                                    <li><strong><%= (total / book.comments.length).toFixed(1) %></strong></li>
 
-                                    </ul>
-                                    <% } else { %>
-                                        <h5>No Comments Yet</h5>
-                                        <% } %>
+                                                    </ul>
+                                                    <% } else { %>
+                                                        <h5>No Comments Yet</h5>
+                                                        <% } %>
 
 
                     </p>

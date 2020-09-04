@@ -1,17 +1,18 @@
 <%- include('../partials/header') %>
 
     <h3>Add A Book</h3>
-    <form id="new-form" action="/books" method="POST">
-        <label>Title:
+    <div id="add-book" class="card">
+        <form id="new-form" action="/books" method="POST">
+            <label>Title:
             <input type="text" name="title">
         </label><br>
-        <label>Author:
+            <label>Author:
             <input type="text" name="author">
         </label><br>
-        <label>Year Published:
+            <label>Year Published:
             <input type="number" name="yearPublished">
         </label><br>
-        <label>Category:
+            <label>Category:
             <select name="category">
                 <option value="Fiction">Fiction</option>
                 <option value="Non-Fiction">Non-Fiction</option>
@@ -22,11 +23,12 @@
                 <option value="Biography">Biography</option>
             </select>
         </label><br>
-        <label>Is the book a movie too?</label><br>
-        <input type="checkbox" name="isMovieToo" checked>
-        </label><br>
-        <input type="submit" value="Add A Book!">
-    </form>
+            <label>Is the book a movie too?</label><br>
+            <input type="checkbox" name="isMovieToo" checked>
+            </label><br>
+            <input type="submit" value="Add A Book!">
+        </form>
+    </div>
 
 
     <%- include('../partials/footer') %>
