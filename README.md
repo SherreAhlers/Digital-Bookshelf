@@ -4,8 +4,10 @@ This app allows the user to store a collection of books and comments. The user w
 
 <img src="https://i.imgur.com/WV7oNvV.png" width="600">  
 
-## Click here to go to Digital-Bookshelf: <https://the-digital-bookshelf.herokuapp.com/>
-Click here to see my project planning Trello Board.
+## Click here to go to Digital-Bookshelf: 
+<https://the-digital-bookshelf.herokuapp.com/>
+
+## Click here to see my project planning Trello Board.
 <https://trello.com/b/2iPDEL4m/project-2>
 
 
@@ -26,9 +28,10 @@ For this app I used Javascript, HTML, CSS, Bootstrap, Jquery, and CRUD.
 <img src="https://i.imgur.com/y1W3QCx.jpg" width="600">
 
 ## Icebox Items
-1. Search Bar
-2. Add section to recommend other books by the same author.
-2. Add an author model.
-3. Link with bookstores to show people where to find these books to read.
-4. Add more styling.
+1. AAU, I want to be able to search for books by their name or category type. ie. Fiction, Non-Fiction, Fantasy, Drama, Action, etc.
+2. AAU, I want to be able to save books I like and add to a view of my own books.
+3. AAU, I want the ability to add recommended books by same author or category.
+4. AAU, I want the ability to add an author and see all authors on one page.
+5. AAU, I want the ability to connect to bookstores and amazon to find the books to read.
+6. Upgrade styling.
 
