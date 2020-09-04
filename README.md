@@ -12,7 +12,7 @@ This app allows the user to store a collection of books and comments. The user w
 
 
 ## Technologies Used
-For this app I used Javascript, HTML, CSS, Bootstrap, Jquery, and CRUD.
+For this app I used Javascript, HTML, CSS, Bootstrap, Jquery, Express, Node.js, MongoDB and CRUD.
 
 
 ## Digital-Bookshelf Wireframe
